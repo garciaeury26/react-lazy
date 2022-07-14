@@ -39,6 +39,8 @@ nav ul {
 }
 
 nav li {
+  color: white;
+  text-decoration: none;
   list-style: none;
   margin-bottom: 10px;
 }
