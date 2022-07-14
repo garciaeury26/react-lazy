@@ -1,50 +1,38 @@
-import { Suspense } from "react";
-import { BrowserRouter, Routes, Route, NavLink, Navigate } from "react-router-dom"
-import logo from "../logo.svg"
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    NavLink
+} from 'react-router-dom';
 
-import { routes } from "./routes";
-
-// * suspense => sirve para decirle a react cuando estoy cargando un modulo y no me salte
-// * un error con lazyLoad
-// el componente resive un fallback que puede ser un componente de react
+import logo from '../logo.svg';
 
 export const Navigation = () => {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <BrowserRouter>
-                <div className="main-layout">
-                    <nav>
-                        <img src={logo} alt="logo" />
-                        <ul>
-                            {
-                                routes.map(({ name, to }) => (
-                                    <li key={to}>
-                                        <NavLink
-                                            className={
-                                                ({ isActive }) => isActive ? "nav-active" : ""} to={to}
-                                        >
-                                            {name}
-                                        </NavLink>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </nav>
-                    <Routes>
-                        {
-                            routes.map(({ name, path, to, Component }) => (
-                                <Route path={path} element={<Component />} />
-                            ))
-                        }
-                        <Route
-                            path="/*"
-                            element={<Navigate to={routes[0].to} replace />}
-                        />
-                    </Routes>
+        <Router>
+            <div className="main-layout">
+                <nav>
+                    <img src={logo} alt="React Logo" />
+                    <ul>
+                        <li>
+                            <NavLink to="/" className="nav-active">Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/about" className="nav-active">About</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/users" className="nav-active">Users</NavLink>
+                        </li>
+                    </ul>
+                </nav>
 
-                </div>
+                <Routes>
+                    <Route path="/about" element={<h1>About</h1>} />
+                    <Route path="/users" element={<h1>Users</h1>} />
+                    <Route path="/" element={<h1>Home</h1>} />
 
-            </BrowserRouter>
-        </Suspense>
-    )
+                </Routes>
+            </div>
+        </Router>
+    );
 }
