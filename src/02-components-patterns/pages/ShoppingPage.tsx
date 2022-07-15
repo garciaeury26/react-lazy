@@ -1,5 +1,7 @@
 import ProductCard, { ProductButtons, ProductImage, ProductTitle } from "../components"
 
+import "../styles/customs-styless.css";
+
 const product = {
     id: "1",
     title: "coffe Mug",
@@ -21,18 +23,34 @@ export const ShoppingPage = () => {
                  soporte a los usuarios o desarraolladores
                  /> */
                 }
-
-
                 <ProductCard product={product}>
                     <ProductCard.Image />
                     <ProductCard.Title title="mause" />
                     <ProductCard.Buttons />
                 </ProductCard>
 
-                <ProductCard product={product}>
+                <ProductCard
+                    className="bg-dark"
+                    product={product}
+                >
                     <ProductImage />
-                    <ProductTitle title="mause" />
-                    <ProductButtons />
+                    <ProductTitle
+                        title="coup"
+                        className="text-white"
+                    />
+                    <ProductButtons className="border-light  text-white flex items-center" />
+
+                </ProductCard>
+
+                <ProductCard
+                    product={product}
+                    style={{ borderTop: "5px solid gold", backgroundColor: "#2c2b2b", color: "white" }}
+                >
+                    <ProductImage />
+                    <ProductTitle
+                        title="coup"
+                    />
+                    <ProductButtons style={{ boxShadow: "1px 2px 3px #ccc" }} />
                 </ProductCard>
             </div>
         </div>

@@ -1,0 +1,25 @@
+.bg-dark {
+    background-color: rgb(56, 56, 56);
+}
+
+.border-light button,
+.border-light div {
+    color: white;
+    border-radius: 8px;
+    border: 1px solid whitesmoke;
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.text-white {
+    color: white;
+}
