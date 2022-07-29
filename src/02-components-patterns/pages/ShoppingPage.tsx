@@ -41,17 +41,6 @@ export const ShoppingPage = () => {
                     <ProductButtons className="border-light  text-white flex items-center" />
 
                 </ProductCard>
-
-                <ProductCard
-                    product={product}
-                    style={{ borderTop: "5px solid gold", backgroundColor: "#2c2b2b", color: "white" }}
-                >
-                    <ProductImage />
-                    <ProductTitle
-                        title="coup"
-                    />
-                    <ProductButtons style={{ boxShadow: "1px 2px 3px #ccc" }} />
-                </ProductCard>
             </div>
         </div>
     )
