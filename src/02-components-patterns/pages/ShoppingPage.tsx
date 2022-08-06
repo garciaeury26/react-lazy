@@ -1,13 +1,13 @@
-import ProductCard, { ProductButtons, ProductImage, ProductTitle } from "../components"
 
+import ProductCard, { ProductButtons, ProductImage, ProductTitle } from "../components"
+import { producs } from "../data/producst";
+import { useShopingCart } from "../hooks/useShopingCart";
 import "../styles/customs-styless.css";
 
-const product = {
-    id: "1",
-    title: "coffe Mug",
-}
 
 export const ShoppingPage = () => {
+    const { shoppingCart, onProductCountChange } = useShopingCart();
+
     return (
         <div>
             <h1>Shopping Page</h1>
@@ -18,29 +18,48 @@ export const ShoppingPage = () => {
                 flexDirection: "row",
                 justifyContent: "center"
             }}>
-                {/*
-                 Puedes usar las dos formas al mismo tiempo y ke daras mas
-                 soporte a los usuarios o desarraolladores
-                 /> */
+                {
+                    producs.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            className="bg-dark"
+                            product={product}
+                            // el onchange resive el product como parametro
+                            onChange={onProductCountChange}
+                            value={shoppingCart[product.id]?.count || 0}
+                        >
+                            <ProductImage />
+                            <ProductTitle
+                                title="coup"
+                                className="text-white"
+                            />
+                            <ProductButtons className="border-light  text-white flex items-center" />
+                        </ProductCard>
+                    ))
                 }
-                <ProductCard product={product}>
-                    <ProductCard.Image />
-                    <ProductCard.Title title="mause" />
-                    <ProductCard.Buttons />
-                </ProductCard>
+            </div>
 
-                <ProductCard
-                    className="bg-dark"
-                    product={product}
-                >
-                    <ProductImage />
-                    <ProductTitle
-                        title="coup"
-                        className="text-white"
-                    />
-                    <ProductButtons className="border-light  text-white flex items-center" />
+            <div className="shopping-card">
+                {
+                    Object.entries(shoppingCart).map(([key, product]) => (
+                        <ProductCard
+                            key={key}
+                            className="bg-dark"
+                            product={product}
+                            style={{ width: "120px", margin: "1rem" }}
+                            value={product.count}
+                            onChange={onProductCountChange}
+                        >
+                            <ProductImage />
+                            <ProductTitle
+                                title="coup"
+                                className="text-white"
+                            />
+                            <ProductButtons className="border-light  text-white flex items-center" />
+                        </ProductCard>
+                    ))
 
-                </ProductCard>
+                }
             </div>
         </div>
     )

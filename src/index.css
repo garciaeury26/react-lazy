@@ -53,3 +53,13 @@ nav li a {
   color: grey;
   transition: all .3s ease-out;
 }
+
+.shopping-card {
+  position: fixed;
+  top: 0;
+  right: 10px;
+  background-color: #363a45;
+  border-radius: 4rem;
+  overflow: auto;
+  padding: 1rem;
+}
