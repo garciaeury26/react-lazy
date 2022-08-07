@@ -1,12 +1,11 @@
 
 import ProductCard, { ProductButtons, ProductImage, ProductTitle } from "../components"
 import { producs } from "../data/producst";
-import { useShopingCart } from "../hooks/useShopingCart";
 import "../styles/customs-styless.css";
 
+const product = producs[0];
 
 export const ShoppingPage = () => {
-    const { shoppingCart, onProductCountChange } = useShopingCart();
 
     return (
         <div>
@@ -18,48 +17,41 @@ export const ShoppingPage = () => {
                 flexDirection: "row",
                 justifyContent: "center"
             }}>
-                {
-                    producs.map((product) => (
-                        <ProductCard
-                            key={product.id}
-                            className="bg-dark"
-                            product={product}
-                            // el onchange resive el product como parametro
-                            onChange={onProductCountChange}
-                            value={shoppingCart[product.id]?.count || 0}
-                        >
-                            <ProductImage />
-                            <ProductTitle
-                                title="coup"
-                                className="text-white"
-                            />
-                            <ProductButtons className="border-light  text-white flex items-center" />
-                        </ProductCard>
-                    ))
-                }
-            </div>
 
-            <div className="shopping-card">
-                {
-                    Object.entries(shoppingCart).map(([key, product]) => (
-                        <ProductCard
-                            key={key}
-                            className="bg-dark"
-                            product={product}
-                            style={{ width: "120px", margin: "1rem" }}
-                            value={product.count}
-                            onChange={onProductCountChange}
-                        >
-                            <ProductImage />
-                            <ProductTitle
-                                title="coup"
-                                className="text-white"
-                            />
-                            <ProductButtons className="border-light  text-white flex items-center" />
-                        </ProductCard>
-                    ))
+                <ProductCard
+                    key={product.id}
+                    style={{ backgroundColor: "#222" }}
+                    product={product}
+                    initialValues={{
+                        count: 4,
+                        maxCount: 10,
+                    }}
+                // el onchange resive el product como parametro 
 
-                }
+                >
+                    {
+                        // la ventaje de usar este patron es que puedo manderle a los hijos los parametros 
+                        ({
+                            reset,
+                            increseBy,
+                            isMaxCountReached,
+                        }) => (
+                            <>
+                                <ProductImage />
+                                <ProductTitle
+                                    title="coup"
+                                    className="text-white"
+                                />
+                                <ProductButtons className="border-light  text-white flex items-center" />
+                                <button onClick={reset}>Reset</button>
+                                <button onClick={() => increseBy(2)}>+2</button>
+                                {
+                                    isMaxCountReached && <button onClick={() => increseBy(-2)}>-2</button>
+                                }
+                            </>
+                        )
+                    }
+                </ProductCard>
             </div>
         </div>
     )
