@@ -1,7 +1,6 @@
 
 import ProductCard, { ProductButtons, ProductImage, ProductTitle } from "../components"
 import { producs } from "../data/producst";
-import "../styles/customs-styless.css";
 
 const product = producs[0];
 
@@ -20,7 +19,6 @@ export const ShoppingPage = () => {
 
                 <ProductCard
                     key={product.id}
-                    style={{ backgroundColor: "#222" }}
                     product={product}
                     initialValues={{
                         count: 4,
@@ -31,23 +29,11 @@ export const ShoppingPage = () => {
                 >
                     {
                         // la ventaje de usar este patron es que puedo manderle a los hijos los parametros 
-                        ({
-                            reset,
-                            increseBy,
-                            isMaxCountReached,
-                        }) => (
+                        ({ reset, increseBy, isMaxCountReached, }) => (
                             <>
                                 <ProductImage />
-                                <ProductTitle
-                                    title="coup"
-                                    className="text-white"
-                                />
-                                <ProductButtons className="border-light  text-white flex items-center" />
-                                <button onClick={reset}>Reset</button>
-                                <button onClick={() => increseBy(2)}>+2</button>
-                                {
-                                    isMaxCountReached && <button onClick={() => increseBy(-2)}>-2</button>
-                                }
+                                <ProductTitle title="coup" />
+                                <ProductButtons />
                             </>
                         )
                     }
