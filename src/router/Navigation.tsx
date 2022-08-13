@@ -4,7 +4,9 @@ import {
     Route,
     NavLink
 } from 'react-router-dom';
-
+import { Formik } from '../03-forms/pages/Formik';
+import { FormikAbstract, FormikComponents, FormikYupPage } from '../03-forms/pages/index';
+import "../03-forms/styles/styles.css"
 import logo from '../logo.svg';
 
 export const Navigation = () => {
@@ -15,21 +17,28 @@ export const Navigation = () => {
                     <img src={logo} alt="React Logo" />
                     <ul>
                         <li>
-                            <NavLink to="/" className="nav-active">Home</NavLink>
+                            <NavLink to="/register" className="nav-active">Register</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/about" className="nav-active">About</NavLink>
+                            <NavLink to="/formik" className="nav-active">Formik</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/users" className="nav-active">Users</NavLink>
+                            <NavLink to="/formikYup" className="nav-active">formikYup</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/formikComponents" className="nav-active">formikComponents</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/formikAbstract" className="nav-active">formikComponents</NavLink>
                         </li>
                     </ul>
                 </nav>
 
                 <Routes>
-                    <Route path="/about" element={<h1>About</h1>} />
-                    <Route path="/users" element={<h1>Users</h1>} />
-                    <Route path="/" element={<h1>Home</h1>} />
+                    <Route path="/formikComponents" element={<FormikComponents />} />
+                    <Route path="/formikYup" element={<FormikYupPage />} />
+                    <Route path="/formik" element={<Formik />} />
+                    <Route path="/formikAbstract" element={<FormikAbstract />} />
 
                 </Routes>
             </div>
