@@ -1,0 +1,67 @@
+[
+    {
+        "type": "text",
+        "name": "firtsName",
+        "label": "First name",
+        "placeholder": "First name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 6
+            }
+        ]
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "label": "email",
+        "placeholder": "Your email address",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 6
+            },
+            {
+                "type": "email"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "game",
+        "label": "game",
+        "placeholder": "Your game",
+        "value": "",
+        "options": [
+            {
+                "id": "1",
+                "label": "pokemon"
+            },
+            {
+                "id": "2",
+                "label": "nba"
+            },
+            {
+                "id": "1",
+                "label": "naruto"
+            }
+        ],
+        "validations": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 6
+            }
+        ]
+    }
+]
